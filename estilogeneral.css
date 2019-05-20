@@ -1,0 +1,81 @@
+body 
+  {  
+   background-color:#E6E6E6;
+   color: black;  
+   background-color: #E6E6E6;
+   /*background-image: url("img/fondoindex.jpg");*/
+   background-repeat:  no-repeat;
+   background-attachment: scroll;
+   background-size: 90%;
+   background-position: 100%
+  } 
+#cuerpo
+    {
+        position: relative;
+        left:10%; 
+        right: 10%;
+        top: 3%;
+        width: 80%;
+        /*height: 90%;*/
+        background-color: white;  
+        overflow: scroll;
+    }
+#muestra p
+{
+    font-family: serif;
+}
+.labelgris
+    {
+        color: gray;
+        font: oblique bold 120% cursive; 
+    }
+#foto
+{
+    position: relative;
+    width: 170px;
+    height: 22%;
+}
+#fotomediana
+{
+    position: relative;
+    width: 220px;
+    height: 220px;
+}
+#fotogrande
+{
+    position: relative;
+    width: 40%;
+    height: 60%;
+}
+#imgninilogo
+{
+    position: relative;
+    top: 2%;
+    width: 40px;
+    height: 40px;
+}
+.scroll
+{
+    width: 100%;  height: 60%; overflow: scroll;
+}
+.fondogris
+{
+    background-color: silver;
+}
+#mensaje_arriba
+{
+    background-color: #80FF80;
+    border-style:solid;
+    border-width:2px;
+    border-style: dotted;
+    color: gray;
+    text-align: center;
+    /*left: 20%;
+    //width: 20%;*/
+}
+.fotobaner
+{
+    position: relative;
+    width: 60%;
+    height: 50%;
+}

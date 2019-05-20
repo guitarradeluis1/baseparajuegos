@@ -1,0 +1,1 @@
+<?php echo "<pre>"; print_r($Salida); echo "</pre>"; ?>
