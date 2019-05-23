@@ -58,7 +58,7 @@ $(document).ready(function()
 {
      $(".carga").click(function (){carga($(this).val());});
      ajax("../../funciones/lista/funciones_id", "div_funciones_id");
-     ajax("../../../arma/lista/arma_id", "div_arma_id");
+     ajax("../../arma/lista/arma_id", "div_arma_id");
      ajax("../../ia/lista/ia_id", "div_ia_id");
     //-------------------------
 });

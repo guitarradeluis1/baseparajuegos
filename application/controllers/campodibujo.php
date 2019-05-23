@@ -96,7 +96,7 @@ public function add($campo_id)
             else if($resultado == 0)
             {
                 #echo "<script>alert('nuevoregitra');</script>";
-                redirect($parametros["controlador"]."/".$parametros["funcion"]."/".$campo_id);
+                redirect($parametros["controlador"]."/index/".$campo_id);
                 #redirect("/".$datos["controlador"]."/234", 'location');
             }
         }
@@ -126,12 +126,12 @@ public function edit($id, $campo_id)
             if($resultado == 1) 
             {
                 #echo "<script>alert('Neuvo registro creado.');</script>";
-                redirect($parametros["controlador"]."/index/".$datos["Salida"]["campo_id"] );
+                redirect($parametros["controlador"]."/index/". $campo_id);
             }
             else if($resultado == 0)
             {
                 #echo "<script>alert('nuevoregitra');</script>";
-                redirect($parametros["controlador"]."/index/".$datos["Salida"]["campo_id"]);
+                redirect($parametros["controlador"]."/index/". $campo_id);
                 #redirect("/".$datos["controlador"]."/234", 'location');
             }
         }
