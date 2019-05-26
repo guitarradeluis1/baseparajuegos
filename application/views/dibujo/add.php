@@ -37,7 +37,7 @@
             <p><b>fisica : </b><br /> 
             <?php echo creador_selector("fisica", array(0=>"NO",1=>"SI"), ""); ?>
             </p>
-            <p><b>immovable : </b><br /> 
+            <p><b>inamovible : </b><br /> 
             <?php echo creador_selector("immovable", array(0=>"NO",1=>"SI"), ""); ?>
             </p>
         </td>

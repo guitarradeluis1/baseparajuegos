@@ -2,7 +2,7 @@
 -- Host:                         127.0.0.1
 -- Versión del servidor:         5.7.17-log - MySQL Community Server (GPL)
 -- SO del servidor:              Win32
--- HeidiSQL Versión:             9.4.0.5125
+-- HeidiSQL Versión:             10.1.0.5464
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS `amigos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Volcando datos para la tabla indi.amigos: ~0 rows (aproximadamente)
+DELETE FROM `amigos`;
 /*!40000 ALTER TABLE `amigos` DISABLE KEYS */;
 /*!40000 ALTER TABLE `amigos` ENABLE KEYS */;
 
@@ -47,9 +48,10 @@ CREATE TABLE IF NOT EXISTS `arma` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla indi.arma: ~3 rows (aproximadamente)
+DELETE FROM `arma`;
 /*!40000 ALTER TABLE `arma` DISABLE KEYS */;
-INSERT IGNORE INTO `arma` (`id`, `objeto_id`, `dibujo_id`, `funciones_id`, `nombre`, `dano_min`, `dano_max`, `defensa`, `fuerza`, `punteria`, `velocidad`) VALUES
-	(1, 3, 7, 3, 'Daga azul', 1, 3, 2, 1, 1, 0),
+INSERT INTO `arma` (`id`, `objeto_id`, `dibujo_id`, `funciones_id`, `nombre`, `dano_min`, `dano_max`, `defensa`, `fuerza`, `punteria`, `velocidad`) VALUES
+	(1, 3, 7, 3, 'Daga azul', 1, 3, 2, -1, 0, 2),
 	(2, 3, 15, 3, 'Palo', 4, 4, 0, 0, 0, 0),
 	(3, 3, 16, 2, 'sanador', 10, 0, 0, 0, 0, 0);
 /*!40000 ALTER TABLE `arma` ENABLE KEYS */;
@@ -79,9 +81,10 @@ CREATE TABLE IF NOT EXISTS `arma_usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla indi.arma_usuarios: ~2 rows (aproximadamente)
+DELETE FROM `arma_usuarios`;
 /*!40000 ALTER TABLE `arma_usuarios` DISABLE KEYS */;
-INSERT IGNORE INTO `arma_usuarios` (`usuarios_id`, `oro`, `plata`, `arma_1`, `arma_2`, `arma_3`, `arma_4`, `arma_5`, `arma_6`, `arma_7`, `arma_8`, `c1`, `c2`, `c3`, `c4`, `c5`, `c6`, `c7`, `c8`) VALUES
-	(1, 2, 50, 2, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0),
+INSERT INTO `arma_usuarios` (`usuarios_id`, `oro`, `plata`, `arma_1`, `arma_2`, `arma_3`, `arma_4`, `arma_5`, `arma_6`, `arma_7`, `arma_8`, `c1`, `c2`, `c3`, `c4`, `c5`, `c6`, `c7`, `c8`) VALUES
+	(1, 2, 50, 0, 3, 1, 0, 0, 0, 0, 0, 0, 2, 1, 0, 0, 0, 0, 0),
 	(4, 2, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 /*!40000 ALTER TABLE `arma_usuarios` ENABLE KEYS */;
 
@@ -100,10 +103,11 @@ CREATE TABLE IF NOT EXISTS `campo` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla indi.campo: ~2 rows (aproximadamente)
+DELETE FROM `campo`;
 /*!40000 ALTER TABLE `campo` DISABLE KEYS */;
-INSERT IGNORE INTO `campo` (`id`, `mapa_id`, `usuarios_id`, `fondo`, `limite_arriba_dibujo`, `limite_abajo_dibujo`, `limite_derecha_dibujo`, `limite_izquierda_dibujo`, `nombre`) VALUES
+INSERT INTO `campo` (`id`, `mapa_id`, `usuarios_id`, `fondo`, `limite_arriba_dibujo`, `limite_abajo_dibujo`, `limite_derecha_dibujo`, `limite_izquierda_dibujo`, `nombre`) VALUES
 	(1, 1, 0, 2, 14, 13, 1, 1, 'uno'),
-	(2, 1, 0, 2, 1, 13, 1, 1, 'dos');
+	(2, 1, 0, 2, 2, 2, 2, 1, 'dos');
 /*!40000 ALTER TABLE `campo` ENABLE KEYS */;
 
 -- Volcando estructura para tabla indi.campo_dibujo
@@ -120,17 +124,32 @@ CREATE TABLE IF NOT EXISTS `campo_dibujo` (
   `posicionx` int(120) NOT NULL,
   `posiciony` int(120) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla indi.campo_dibujo: ~6 rows (aproximadamente)
+-- Volcando datos para la tabla indi.campo_dibujo: ~20 rows (aproximadamente)
+DELETE FROM `campo_dibujo`;
 /*!40000 ALTER TABLE `campo_dibujo` DISABLE KEYS */;
-INSERT IGNORE INTO `campo_dibujo` (`id`, `campo_id`, `dibujo_id`, `funciones_id`, `arma_id`, `ia_id`, `campo_destino`, `parametros`, `nivel`, `posicionx`, `posiciony`) VALUES
-	(1, 1, 14, 0, 0, 0, 0, 'parametro', 0, 130, 70),
+INSERT INTO `campo_dibujo` (`id`, `campo_id`, `dibujo_id`, `funciones_id`, `arma_id`, `ia_id`, `campo_destino`, `parametros`, `nivel`, `posicionx`, `posiciony`) VALUES
+	(1, 1, 14, 0, 0, 0, 0, 'parametro', 0, 130, 90),
 	(2, 1, 8, 1, 0, 0, 0, '', 0, 160, 150),
 	(4, 1, 8, 0, 0, 0, 2, '', 0, 30, 230),
 	(7, 1, 16, 4, 3, 0, 0, '', 0, 40, 120),
-	(8, 2, 14, 0, 0, 0, 0, '', 0, 40, 120),
-	(9, 2, 8, 0, 0, 0, 1, '', 0, 20, 20);
+	(8, 2, 22, 0, 0, 0, 0, '', 0, 380, 40),
+	(9, 2, 8, 0, 0, 0, 1, '', 0, 20, 20),
+	(10, 2, 21, 0, 0, 0, 0, '', 0, 340, 40),
+	(11, 2, 25, 0, 0, 0, 0, '', 0, 301, 40),
+	(12, 2, 20, 0, 0, 0, 0, '', 0, 261, 40),
+	(13, 2, 25, 0, 0, 0, 0, '', 0, 301, 79),
+	(14, 2, 23, 0, 0, 0, 0, '', 0, 260, 119),
+	(15, 2, 26, 0, 0, 0, 0, '', 0, 261, 79),
+	(16, 2, 25, 0, 0, 0, 0, '', 0, 340, 80),
+	(17, 2, 27, 0, 0, 0, 0, '', 0, 380, 80),
+	(18, 2, 24, 0, 0, 0, 0, '', 0, 380, 120),
+	(19, 2, 29, 0, 0, 0, 0, '', 0, 341, 119),
+	(20, 2, 28, 0, 0, 0, 0, '', 0, 301, 118),
+	(21, 2, 18, 0, 0, 0, 0, '', 0, 120, 60),
+	(22, 2, 18, 0, 0, 0, 0, '', 0, 120, 100),
+	(23, 2, 19, 0, 0, 0, 0, '', 0, 470, 120);
 /*!40000 ALTER TABLE `campo_dibujo` ENABLE KEYS */;
 
 -- Volcando estructura para tabla indi.campo_enemigo
@@ -139,12 +158,14 @@ CREATE TABLE IF NOT EXISTS `campo_enemigo` (
   `campo_id` bigint(20) NOT NULL,
   `enemigo_id` bigint(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla indi.campo_enemigo: ~1 rows (aproximadamente)
+-- Volcando datos para la tabla indi.campo_enemigo: ~2 rows (aproximadamente)
+DELETE FROM `campo_enemigo`;
 /*!40000 ALTER TABLE `campo_enemigo` DISABLE KEYS */;
-INSERT IGNORE INTO `campo_enemigo` (`id`, `campo_id`, `enemigo_id`) VALUES
-	(4, 1, 1);
+INSERT INTO `campo_enemigo` (`id`, `campo_id`, `enemigo_id`) VALUES
+	(5, 2, 1),
+	(6, 1, 1);
 /*!40000 ALTER TABLE `campo_enemigo` ENABLE KEYS */;
 
 -- Volcando estructura para tabla indi.campo_objeto
@@ -156,8 +177,9 @@ CREATE TABLE IF NOT EXISTS `campo_objeto` (
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla indi.campo_objeto: ~5 rows (aproximadamente)
+DELETE FROM `campo_objeto`;
 /*!40000 ALTER TABLE `campo_objeto` DISABLE KEYS */;
-INSERT IGNORE INTO `campo_objeto` (`id`, `campo_id`, `objeto_id`) VALUES
+INSERT INTO `campo_objeto` (`id`, `campo_id`, `objeto_id`) VALUES
 	(1, 1, 1),
 	(2, 2, 1),
 	(3, 2, 2),
@@ -176,9 +198,10 @@ CREATE TABLE IF NOT EXISTS `campo_usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla indi.campo_usuarios: ~2 rows (aproximadamente)
+DELETE FROM `campo_usuarios`;
 /*!40000 ALTER TABLE `campo_usuarios` DISABLE KEYS */;
-INSERT IGNORE INTO `campo_usuarios` (`usuarios_id`, `campo_id`, `x`, `y`, `cambio`) VALUES
-	(1, 1, 314.985000000001, 239.80999999999858, '07-10-2018'),
+INSERT INTO `campo_usuarios` (`usuarios_id`, `campo_id`, `x`, `y`, `cambio`) VALUES
+	(1, 1, 203.26, 198.76000000000002, '22-05-2019'),
 	(4, 2, 349.37000000000006, 122.66914803080272, '60');
 /*!40000 ALTER TABLE `campo_usuarios` ENABLE KEYS */;
 
@@ -197,8 +220,9 @@ CREATE TABLE IF NOT EXISTS `chat` (
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- Volcando datos para la tabla indi.chat: ~10 rows (aproximadamente)
+DELETE FROM `chat`;
 /*!40000 ALTER TABLE `chat` DISABLE KEYS */;
-INSERT IGNORE INTO `chat` (`id`, `usuario1`, `usuario2`, `campo_id`, `mapa_id`, `gremio_id`, `grupo`, `mensaje`, `creado`) VALUES
+INSERT INTO `chat` (`id`, `usuario1`, `usuario2`, `campo_id`, `mapa_id`, `gremio_id`, `grupo`, `mensaje`, `creado`) VALUES
 	(1, 1, 0, 1, 0, 0, 0, 'campo', '02-06-2018'),
 	(2, 4, 0, 1, 0, 0, 0, 'campoasssss', '02-06-2018'),
 	(3, 1, 0, 1, 0, 0, 0, 'asdasdasdasda', '13-06-2018'),
@@ -222,6 +246,7 @@ CREATE TABLE IF NOT EXISTS `collide` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla indi.collide: ~0 rows (aproximadamente)
+DELETE FROM `collide`;
 /*!40000 ALTER TABLE `collide` DISABLE KEYS */;
 /*!40000 ALTER TABLE `collide` ENABLE KEYS */;
 
@@ -241,11 +266,12 @@ CREATE TABLE IF NOT EXISTS `dibujo` (
   `fisica` int(2) DEFAULT '0',
   `immovable` int(2) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla indi.dibujo: ~16 rows (aproximadamente)
+-- Volcando datos para la tabla indi.dibujo: ~32 rows (aproximadamente)
+DELETE FROM `dibujo`;
 /*!40000 ALTER TABLE `dibujo` DISABLE KEYS */;
-INSERT IGNORE INTO `dibujo` (`id`, `dibujotipo_id`, `objeto_id`, `texto`, `height`, `width`, `font`, `color`, `velocidad`, `cuadros`, `play`, `fisica`, `immovable`) VALUES
+INSERT INTO `dibujo` (`id`, `dibujotipo_id`, `objeto_id`, `texto`, `height`, `width`, `font`, `color`, `velocidad`, `cuadros`, `play`, `fisica`, `immovable`) VALUES
 	(1, 3, 1, 'Agua pura', 40, 40, '20px Arial', '#8080ff', 1, '[(23*21)+3,(23*21)+5]', 0, 1, 1),
 	(2, 3, 1, 'Pasto', 40, 40, '', '#000000', 1, '[(23*2)+1]', 0, 0, 0),
 	(3, 3, 2, 'Gatita abajo', 40, 40, '', '#000000', 6, '[ (16*4),(16*4)+1,(16*4)+2,(16*4)+3]', 0, 0, 0),
@@ -261,7 +287,23 @@ INSERT IGNORE INTO `dibujo` (`id`, `dibujotipo_id`, `objeto_id`, `texto`, `heigh
 	(13, 3, 1, 'madera', 40, 40, '', '#000000', 1, '[(23*2)+8]', 0, 1, 1),
 	(14, 3, 1, 'piedra', 40, 40, '', '#000000', 1, '[(23*3)+4]', 0, 1, 1),
 	(15, 3, 3, 'palo', 40, 40, '', '#000000', 1, '[(14*6)+2]', 0, 0, 0),
-	(16, 3, 3, 'sanar1', 40, 40, '', '#ffff80', 0, '[(14*3)+5]', 0, 1, 1);
+	(16, 3, 3, 'sanar1', 40, 40, '', '#ffff80', 0, '[(14*3)+5]', 0, 1, 1),
+	(17, 3, 4, 'uno', 40, 40, '', '#80ff80', 1, '[0,1,2,3]', 1, 0, 0),
+	(18, 3, 1, 'flores rojas', 40, 40, '', '#ff0000', 0, '[231]', 0, 0, 0),
+	(19, 3, 1, 'flores rojas con tronco', 40, 40, '', '#ff0000', 1, '[184]', 0, 0, 0),
+	(20, 3, 1, 'techo naranja1 borde izqu ini', 40, 40, '', '#ff8000', 0, '[65]', 0, 1, 1),
+	(21, 3, 1, 'techo naranja2 con ventana', 40, 40, '', '#ff8000', 0, '[67]', 0, 1, 1),
+	(22, 3, 1, 'techo naranja1 borde dere ini', 40, 40, '', '#ff8000', 0, '[68]', 0, 1, 1),
+	(23, 3, 1, 'techo naranja1 borde izqu fin', 40, 40, '', '#ff8000', 0, '[111]', 0, 1, 1),
+	(24, 3, 1, 'techo naranja1 borde dere fin', 40, 40, '', '#ff8000', 0, '[114]', 0, 1, 1),
+	(25, 3, 1, 'techo naranja', 40, 40, '', '#ff8000', 0, '[89]', 0, 1, 1),
+	(26, 3, 1, 'techo naranja1 borde izqu', 40, 40, '', '#ff8000', 0, '[88]', 0, 1, 1),
+	(27, 3, 1, 'techo naranja1 borde dere', 40, 40, '', '#ff8000', 0, '[91]', 0, 1, 1),
+	(28, 3, 1, 'pared ventana izq', 40, 40, '', '#ffff80', 0, '[155]', 0, 1, 1),
+	(29, 3, 1, 'pared ventana der', 40, 40, '', '#ffff80', 0, '[156]', 0, 1, 1),
+	(30, 3, 1, 'pared', 40, 40, '', '#ffff80', 0, '[200]', 0, 1, 1),
+	(31, 3, 1, 'pared ventana', 40, 40, '', '#ffff80', 0, '[179]', 0, 1, 1),
+	(32, 3, 1, 'pared puerta', 40, 40, '', '#ffff80', 0, '[202]', 0, 1, 1);
 /*!40000 ALTER TABLE `dibujo` ENABLE KEYS */;
 
 -- Volcando estructura para tabla indi.dibujotipo
@@ -272,8 +314,9 @@ CREATE TABLE IF NOT EXISTS `dibujotipo` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla indi.dibujotipo: ~3 rows (aproximadamente)
+DELETE FROM `dibujotipo`;
 /*!40000 ALTER TABLE `dibujotipo` DISABLE KEYS */;
-INSERT IGNORE INTO `dibujotipo` (`id`, `nombre`) VALUES
+INSERT INTO `dibujotipo` (`id`, `nombre`) VALUES
 	(1, 'text'),
 	(2, 'button'),
 	(3, 'sprite');
@@ -297,14 +340,32 @@ CREATE TABLE IF NOT EXISTS `enemigo` (
   `fuerza` int(100) NOT NULL,
   `punteria` int(100) NOT NULL,
   `velocidad` int(100) NOT NULL,
+  `velocidad_juego` int(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- Volcando datos para la tabla indi.enemigo: ~1 rows (aproximadamente)
+DELETE FROM `enemigo`;
 /*!40000 ALTER TABLE `enemigo` DISABLE KEYS */;
-INSERT IGNORE INTO `enemigo` (`id`, `objeto_id`, `movimientos_id`, `nombre`, `left_id`, `right_id`, `down_id`, `up_id`, `stop_id`, `dano_min`, `dano_max`, `vida`, `defensa`, `fuerza`, `punteria`, `velocidad`) VALUES
-	(1, 2, 4, 'gato enemigo', 5, 4, 3, 6, 3, 2, 4, 20, 1, 1, 1, 25);
+INSERT INTO `enemigo` (`id`, `objeto_id`, `movimientos_id`, `nombre`, `left_id`, `right_id`, `down_id`, `up_id`, `stop_id`, `dano_min`, `dano_max`, `vida`, `defensa`, `fuerza`, `punteria`, `velocidad`, `velocidad_juego`) VALUES
+	(1, 2, 4, 'gato enemigo', 3, 4, 3, 6, 3, 2, 4, 20, 1, 1, 1, 25, 2);
 /*!40000 ALTER TABLE `enemigo` ENABLE KEYS */;
+
+-- Volcando estructura para tabla indi.enemigo_arma
+CREATE TABLE IF NOT EXISTS `enemigo_arma` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `enemigo_id` int(11) NOT NULL,
+  `arma_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+-- Volcando datos para la tabla indi.enemigo_arma: ~2 rows (aproximadamente)
+DELETE FROM `enemigo_arma`;
+/*!40000 ALTER TABLE `enemigo_arma` DISABLE KEYS */;
+INSERT INTO `enemigo_arma` (`id`, `enemigo_id`, `arma_id`) VALUES
+	(4, 1, 3),
+	(5, 1, 1);
+/*!40000 ALTER TABLE `enemigo_arma` ENABLE KEYS */;
 
 -- Volcando estructura para tabla indi.funciones
 CREATE TABLE IF NOT EXISTS `funciones` (
@@ -316,8 +377,9 @@ CREATE TABLE IF NOT EXISTS `funciones` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla indi.funciones: ~4 rows (aproximadamente)
+DELETE FROM `funciones`;
 /*!40000 ALTER TABLE `funciones` DISABLE KEYS */;
-INSERT IGNORE INTO `funciones` (`id`, `nombre`, `descripcion`) VALUES
+INSERT INTO `funciones` (`id`, `nombre`, `descripcion`) VALUES
 	(1, 'console_pruebas', 'Pruebas'),
 	(2, 'obj_sanar', 'Recupera vida'),
 	(3, 'obj_arma', 'Arma'),
@@ -334,6 +396,7 @@ CREATE TABLE IF NOT EXISTS `gremios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Volcando datos para la tabla indi.gremios: ~0 rows (aproximadamente)
+DELETE FROM `gremios`;
 /*!40000 ALTER TABLE `gremios` DISABLE KEYS */;
 /*!40000 ALTER TABLE `gremios` ENABLE KEYS */;
 
@@ -345,6 +408,7 @@ CREATE TABLE IF NOT EXISTS `gremios_usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Volcando datos para la tabla indi.gremios_usuarios: ~0 rows (aproximadamente)
+DELETE FROM `gremios_usuarios`;
 /*!40000 ALTER TABLE `gremios_usuarios` DISABLE KEYS */;
 /*!40000 ALTER TABLE `gremios_usuarios` ENABLE KEYS */;
 
@@ -360,6 +424,7 @@ CREATE TABLE IF NOT EXISTS `grupo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Volcando datos para la tabla indi.grupo: ~0 rows (aproximadamente)
+DELETE FROM `grupo`;
 /*!40000 ALTER TABLE `grupo` DISABLE KEYS */;
 /*!40000 ALTER TABLE `grupo` ENABLE KEYS */;
 
@@ -374,22 +439,27 @@ CREATE TABLE IF NOT EXISTS `ia` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla indi.ia: ~1 rows (aproximadamente)
+DELETE FROM `ia`;
 /*!40000 ALTER TABLE `ia` DISABLE KEYS */;
-INSERT IGNORE INTO `ia` (`id`, `movimientos_id`, `nombre`, `descripcion`) VALUES
+INSERT INTO `ia` (`id`, `movimientos_id`, `nombre`, `descripcion`) VALUES
 	(1, 1, 'ia uno', 'aaaaaaa');
 /*!40000 ALTER TABLE `ia` ENABLE KEYS */;
 
 -- Volcando estructura para tabla indi.mapa
 CREATE TABLE IF NOT EXISTS `mapa` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `campo_id` bigint(20) DEFAULT '0',
   `nombre` varchar(50) NOT NULL,
+  `x` bigint(20) DEFAULT '0',
+  `y` bigint(20) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla indi.mapa: ~1 rows (aproximadamente)
+DELETE FROM `mapa`;
 /*!40000 ALTER TABLE `mapa` DISABLE KEYS */;
-INSERT IGNORE INTO `mapa` (`id`, `nombre`) VALUES
-	(1, 'Inicio');
+INSERT INTO `mapa` (`id`, `campo_id`, `nombre`, `x`, `y`) VALUES
+	(1, 1, 'Inicio', 50, 50);
 /*!40000 ALTER TABLE `mapa` ENABLE KEYS */;
 
 -- Volcando estructura para tabla indi.movimientos
@@ -400,8 +470,9 @@ CREATE TABLE IF NOT EXISTS `movimientos` (
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- Volcando datos para la tabla indi.movimientos: ~6 rows (aproximadamente)
+DELETE FROM `movimientos`;
 /*!40000 ALTER TABLE `movimientos` DISABLE KEYS */;
-INSERT IGNORE INTO `movimientos` (`id`, `nombre`) VALUES
+INSERT INTO `movimientos` (`id`, `nombre`) VALUES
 	(1, 'quieto'),
 	(2, 'arriba abajo'),
 	(3, 'derecha izquierda'),
@@ -422,14 +493,16 @@ CREATE TABLE IF NOT EXISTS `objeto` (
   `conteofila` int(10) DEFAULT '0',
   `conteocolumna` int(10) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla indi.objeto: ~3 rows (aproximadamente)
+-- Volcando datos para la tabla indi.objeto: ~4 rows (aproximadamente)
+DELETE FROM `objeto`;
 /*!40000 ALTER TABLE `objeto` DISABLE KEYS */;
-INSERT IGNORE INTO `objeto` (`id`, `objetotipo_id`, `nombre`, `archivo`, `cortex`, `cortey`, `inventario`, `conteofila`, `conteocolumna`) VALUES
+INSERT INTO `objeto` (`id`, `objetotipo_id`, `nombre`, `archivo`, `cortex`, `cortey`, `inventario`, `conteofila`, `conteocolumna`) VALUES
 	(1, 1, 'Bosque', 'Bosque.png', 32, 32, 0, 23, 29),
 	(2, 4, 'Personajes1', 'Personajes1.png', 32, 48, 0, 16, 8),
-	(3, 1, 'Objetos1', 'Objetos1.png', 60, 60, 1, 14, 8);
+	(3, 1, 'Objetos1', 'Objetos1.png', 60, 60, 1, 14, 8),
+	(4, 1, 'demo', 'demo.png', 16, 16, 0, 2, 4);
 /*!40000 ALTER TABLE `objeto` ENABLE KEYS */;
 
 -- Volcando estructura para tabla indi.objetotipo
@@ -440,8 +513,9 @@ CREATE TABLE IF NOT EXISTS `objetotipo` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla indi.objetotipo: ~4 rows (aproximadamente)
+DELETE FROM `objetotipo`;
 /*!40000 ALTER TABLE `objetotipo` DISABLE KEYS */;
-INSERT IGNORE INTO `objetotipo` (`id`, `nombre`) VALUES
+INSERT INTO `objetotipo` (`id`, `nombre`) VALUES
 	(1, 'spritesheet'),
 	(2, 'image'),
 	(3, 'audio'),
@@ -457,8 +531,9 @@ CREATE TABLE IF NOT EXISTS `paises` (
 ) ENGINE=InnoDB AUTO_INCREMENT=241 DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla indi.paises: ~240 rows (aproximadamente)
+DELETE FROM `paises`;
 /*!40000 ALTER TABLE `paises` DISABLE KEYS */;
-INSERT IGNORE INTO `paises` (`id`, `iso`, `nombre`) VALUES
+INSERT INTO `paises` (`id`, `iso`, `nombre`) VALUES
 	(1, 'AF', 'Afganistán'),
 	(2, 'AX', 'Islas Gland'),
 	(3, 'AL', 'Albania'),
@@ -715,8 +790,9 @@ CREATE TABLE IF NOT EXISTS `personaje` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla indi.personaje: ~2 rows (aproximadamente)
+DELETE FROM `personaje`;
 /*!40000 ALTER TABLE `personaje` DISABLE KEYS */;
-INSERT IGNORE INTO `personaje` (`id`, `objeto_id`, `nombre`, `left_id`, `right_id`, `down_id`, `up_id`, `stop_id`) VALUES
+INSERT INTO `personaje` (`id`, `objeto_id`, `nombre`, `left_id`, `right_id`, `down_id`, `up_id`, `stop_id`) VALUES
 	(1, 2, 'Gatita.', 5, 4, 3, 6, 3),
 	(2, 2, 'Crerigo', 10, 11, 9, 12, 9);
 /*!40000 ALTER TABLE `personaje` ENABLE KEYS */;
@@ -729,8 +805,9 @@ CREATE TABLE IF NOT EXISTS `tipousuario` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla indi.tipousuario: ~3 rows (aproximadamente)
+DELETE FROM `tipousuario`;
 /*!40000 ALTER TABLE `tipousuario` DISABLE KEYS */;
-INSERT IGNORE INTO `tipousuario` (`id`, `nombre`) VALUES
+INSERT INTO `tipousuario` (`id`, `nombre`) VALUES
 	(1, 'Abministrador'),
 	(2, 'Creador'),
 	(3, 'Jugador');
@@ -764,9 +841,10 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla indi.usuarios: ~2 rows (aproximadamente)
+DELETE FROM `usuarios`;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT IGNORE INTO `usuarios` (`id`, `tipousuario_id`, `paises_id`, `personaje_id`, `arma1`, `arma2`, `email`, `pass`, `nombre`, `fecha_nacimento`, `creado`, `ultima_entrada`, `img_jugador`, `img_perfil`, `vida`, `nivel`, `puntos`, `defensa`, `fuerza`, `punteria`, `velocidad`) VALUES
-	(1, 1, 52, 2, 1, NULL, 'guitarradeluis@gmail.com', 'luis', 'luis', '1991-09-13', '2017-08-29', '2018-09-22', NULL, NULL, 100, 0, 0, 0, 2, 1, 2),
+INSERT INTO `usuarios` (`id`, `tipousuario_id`, `paises_id`, `personaje_id`, `arma1`, `arma2`, `email`, `pass`, `nombre`, `fecha_nacimento`, `creado`, `ultima_entrada`, `img_jugador`, `img_perfil`, `vida`, `nivel`, `puntos`, `defensa`, `fuerza`, `punteria`, `velocidad`) VALUES
+	(1, 1, 52, 2, 2, NULL, 'guitarradeluis@gmail.com', 'luis', 'luis', '1991-09-13', '2017-08-29', '2019-04-21', NULL, NULL, 55, 0, 0, 0, 2, 1, 2),
 	(4, 2, 52, 1, 1, NULL, 'guitarradeluis@hotmail.com', 'luis', 'luis2', '1991-09-13', '2017-08-29', '2018-04-14', NULL, NULL, 100, 0, 0, 0, 0, 0, 0);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 

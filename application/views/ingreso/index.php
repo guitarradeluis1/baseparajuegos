@@ -1,13 +1,13 @@
 <?php
 if($session["tipousuario_id"] == 1)
 {
-    echo anchor("/funciones/index", "funciones", "class='plata'");
+    echo anchor("/objeto/index", "Diseño", "class='plata'");
+    echo anchor("/arma/index", "Objetos", "class='plata'");
     echo anchor("/enemigo/index", "Enemigos", "class='plata'");
-    echo anchor("/ia/index", "IA", "class='plata'");
-    echo anchor("/objeto/index", "Obejto", "class='plata'");
     echo anchor("/personaje/index", "Personajes", "class='plata'");
-    echo anchor("/arma/index", "Armas", "class='plata'");
-    echo anchor("/mapa/index", "Mapa", "class='plata'");
+    echo anchor("/mapa/index", "Mapas", "class='plata'");
+    echo anchor("/ia/index", "IA", "class='plata'");
+    echo anchor("/funciones/index", "Funciones", "class='plata'");
     #echo anchor("/campoobjeto/index", "Campo Objeto", "class='plata'");
     echo "<hr />";
 }
@@ -20,7 +20,7 @@ if($session["tipousuario_id"] == 1)
     }
     else
     {
-        echo anchor("/ingreso/mundo/1", "Entrar", "class='plata'");
+        echo anchor("/ingreso/mundo/1", "Comenzar Juego", "class='plata'");
     }
     $img_perfil = "";
     if($session["img_perfil"] == "")
