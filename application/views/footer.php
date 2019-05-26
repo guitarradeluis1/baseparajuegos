@@ -18,7 +18,8 @@ if(isset($session["Contrato"]))
 }
 ?>
 <p class="footer">
-(Page rendered in <strong>{elapsed_time}</strong> seconds)</p>
+(Page rendered in <strong>{elapsed_time}</strong> seconds) 
+Licencia <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache2.0</a></p>
 </div>
 <!--Luis Eduardo Bernal Suarez guitarradeluis@gmail.com-->
 <script>
