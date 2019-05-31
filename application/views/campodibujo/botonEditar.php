@@ -1,0 +1,1 @@
+<?php echo anchor($controlador."/edit/".$id."/".$campo_id, "Editar", "class='plata'"); ?>

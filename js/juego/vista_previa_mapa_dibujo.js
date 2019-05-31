@@ -70,6 +70,15 @@ function create()
                 conteo_objetos["posicion"+(objetos[objeto].id)].width = parseInt(objetos[objeto].dibujo.width);
                 conteo_objetos["posicion"+(objetos[objeto].id)].animations.add( objetos[objeto].dibujo.texto.toString(), eval(objetos[objeto].dibujo.cuadros), parseInt(objetos[objeto].dibujo.velocidad), true);
                 conteo_objetos["posicion"+(objetos[objeto].id)].animations.play(objetos[objeto].dibujo.texto.toString());
+                conteo_objetos["posicion"+(objetos[objeto].id)].inputEnabled = true;
+                conteo_objetos["posicion"+(objetos[objeto].id)].datos = { 
+                    id: objetos[objeto].id, 
+                    nombre: objetos[objeto].dibujo.texto,
+                    campo_id: objetos[objeto].campo_id,
+                    x:  objetos[objeto].posicionx,
+                    y:  objetos[objeto].posiciony
+                };
+                conteo_objetos["posicion"+(objetos[objeto].id)].events.onInputDown.add(selector, this);
             }
             else if(objetos[objeto].dibujo.objeto.objetotipo_id == "2")
             {
@@ -215,3 +224,9 @@ function movimiento_enemigo()
         }
     }
 }
+function selector(seleccion)
+{
+    const { datos } = seleccion;
+    $(`#info`).html(`<b>${datos.id}</b>: ${datos.nombre} (${datos.x}, ${datos.y}) <div id="btn_editor"></div>`);
+    ajax(`../../campodibujo/botonEditar/${datos.id}/${datos.campo_id}`, "btn_editor");
+};

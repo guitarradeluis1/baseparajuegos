@@ -12,7 +12,15 @@
     <hr />
     <label class="label_verde titulo_centrado">MAPA: <?php echo $Campo["mapa"]["nombre"]; ?> [<?php echo $Campo["nombre"]; ?>]</label>
     <hr />
-    <div id="canvas"></div>
+    <table>
+        <tr>
+            <td><div id="canvas"></div><td>
+            <td>
+                <div id="info"></div>
+                <div id="acctions"></div>
+            <td>
+        </tr>
+    </table>
 <!--:::::::::::::::::::::::::::::::-->
 <table>
     <tr>
@@ -20,6 +28,7 @@
     </tr>
     <tr>
         <th>ID</th>
+        <th>EDITAR</th>
         <th>DIBUJO</th>
         <th>POSICION</th>
         <th>FUNCION</th>
@@ -35,6 +44,7 @@ if($Salida)
     {
     ?>
     <tr>
+    <td><?php echo $info["id"]; ?></td>
         <td><?php echo anchor($controlador."/edit/".$info["id"]."/".$Campo["id"], "Editar", "class='plata'"); ?></td>
         <td><?php echo $info["dibujo"]["texto"]; ?></td>
         <td><?php echo $info["posicionx"].",".$info["posiciony"]; ?></td>

@@ -248,5 +248,16 @@ public function eliminarenemigo($id, $campo_id)
     redirect("campodibujo/index/".$campo_id );
 }
 //_____________________________________________________
+public function botonEditar($id, $campo_id)
+{
+    $datos = array();
+    $parametros = $this->parametros();
+    $parametros["funcion"] = "botonEditar";
+    $datos = $parametros;
+    $datos["id"] = $id;
+    $datos["campo_id"] = $campo_id;
+    $this->load->view($parametros["carpeta"]."/".$parametros["funcion"], $datos);
+}
+//_____________________________________________________
 }
 ?>
