@@ -299,6 +299,11 @@ function create()
         pint_enemigos[en].direccion = 0; // 0 = abajo | 1 = arriba | 2 = derecha | 3 = izquierda 
         pint_enemigos[en].velocidad = enemigos[en].enemigo.velocidad;
         pint_enemigos[en].enemigo_id = enemigos[en].enemigo.id;
+        pint_enemigos[en].movomiento = true;
+        if(enemigos[en].ia)
+        {
+            pint_enemigos[en].ia = enemigos[en].ia;
+        }
         //Animacion-------------------------------------------
         pint_enemigos[en].animations.add('left', eval(enemigos[en].enemigo.left.cuadros), parseInt(enemigos[en].enemigo.left.velocidad), true);//16
         pint_enemigos[en].animations.add('right', eval(enemigos[en].enemigo.right.cuadros), parseInt(enemigos[en].enemigo.right.velocidad), true);
@@ -337,7 +342,16 @@ function update()
     //Enemigo coicion-------------------------------------------
     for(var en in enemigos)
     {
-        game.physics.arcade.collide(personaje, pint_enemigos[en], function(){pelea(pint_enemigos[en].enemigo_id)});
+        game.physics.arcade.collide(personaje, pint_enemigos[en], function(){
+            if(pint_enemigos[en].ia.id)
+            {
+                pint_enemigos[en].movomiento = false;
+                dialogoIA(pint_enemigos[en].ia);
+                setInterval(function(){ pint_enemigos[en].movomiento = true; }, 3000);
+            }
+            else
+            {pelea(pint_enemigos[en].enemigo_id);}
+        });
         game.physics.arcade.collide(pint_enemigos[en], limite1);
         game.physics.arcade.collide(pint_enemigos[en], limite2);
         game.physics.arcade.collide(pint_enemigos[en], limite3);

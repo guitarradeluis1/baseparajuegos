@@ -6,7 +6,7 @@ class Ia_model extends CI_Model
        parent::__construct();
        $this->load->database();
        $this->load->library('session');
-       #$this->load->model('objeto_model');
+       $this->load->model('enemigo_model');
        #$this->load->model('listas_model');
        #$this->load->model('agendamientotipocampos_model');
     }
@@ -32,11 +32,13 @@ function todo()
                 $Arreglo[$K] = array
                 (
                    'id' => $info->id,
+                   'enemigo_id' => $info->enemigo_id,
+                   'nivel' => $info->nivel,
                    'nombre' => $info->nombre,
                    'descripcion' => $info->descripcion,
                );
                ####################################################################
-               #$Arreglo[$K]["mapa"] = $this->mapa_model->consulto($info->mapa_id);
+               $Arreglo[$K]["enemigo"] = $this->enemigo_model->consulto($info->enemigo_id);
                ####################################################################
                $K = $K + 1;
             }
@@ -91,11 +93,13 @@ function consulto($id)
     {
         $retorno = array
         (
-           'id' => $info->id,
-           'nombre' => $info->nombre,
-           'descripcion' => $info->descripcion,
+            'id' => $info->id,
+            'enemigo_id' => $info->enemigo_id,
+            'nivel' => $info->nivel,
+            'nombre' => $info->nombre,
+            'descripcion' => $info->descripcion,
            ####################################################################
-           #"mapa" => $this->mapa_model->consulto($info->mapa_id),
+           "enemigo" => $this->enemigo_model->consulto($info->enemigo_id),
            ####################################################################
        );   
     }

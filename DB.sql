@@ -161,7 +161,7 @@ INSERT INTO `campo_dibujo` (`id`, `campo_id`, `dibujo_id`, `funciones_id`, `arma
 	(32, 2, 33, 0, 0, 0, 0, '', 0, 420, 280),
 	(33, 2, 33, 0, 0, 0, 0, '', 0, 460, 280),
 	(34, 2, 33, 0, 0, 0, 0, '', 0, 500, 280),
-	(35, 2, 19, 0, 0, 0, 0, '', 0, 420, 200),
+	(35, 2, 19, 0, 0, 0, 0, '', 0, 420, 180),
 	(36, 2, 18, 0, 0, 0, 0, '', 0, 60, 330),
 	(37, 2, 34, 0, 0, 0, 0, '', 0, 120, 320),
 	(38, 2, 34, 0, 0, 0, 0, '', 0, 380, 300),
@@ -234,7 +234,7 @@ CREATE TABLE IF NOT EXISTS `campo_usuarios` (
 DELETE FROM `campo_usuarios`;
 /*!40000 ALTER TABLE `campo_usuarios` DISABLE KEYS */;
 INSERT INTO `campo_usuarios` (`usuarios_id`, `campo_id`, `x`, `y`, `cambio`) VALUES
-	(1, 2, 45.39999999999999, 236.405, '27-05-2019'),
+	(1, 1, 282.61111724853527, 306.6950000000011, '03-06-2019'),
 	(4, 2, 349.37000000000006, 250, '60');
 /*!40000 ALTER TABLE `campo_usuarios` ENABLE KEYS */;
 
@@ -476,7 +476,8 @@ DELETE FROM `grupo`;
 -- Volcando estructura para tabla indi.ia
 CREATE TABLE IF NOT EXISTS `ia` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `movimientos_id` bigint(20) NOT NULL DEFAULT '0',
+  `enemigo_id` bigint(20) NOT NULL DEFAULT '0',
+  `nivel` int(22) DEFAULT '0',
   `nombre` varchar(120) NOT NULL,
   `descripcion` varchar(150) NOT NULL,
   PRIMARY KEY (`id`),
@@ -486,8 +487,8 @@ CREATE TABLE IF NOT EXISTS `ia` (
 -- Volcando datos para la tabla indi.ia: ~1 rows (aproximadamente)
 DELETE FROM `ia`;
 /*!40000 ALTER TABLE `ia` DISABLE KEYS */;
-INSERT INTO `ia` (`id`, `movimientos_id`, `nombre`, `descripcion`) VALUES
-	(1, 1, 'ia uno', 'aaaaaaa');
+INSERT INTO `ia` (`id`, `enemigo_id`, `nivel`, `nombre`, `descripcion`) VALUES
+	(1, 1, 0, 'gata', 'gatita');
 /*!40000 ALTER TABLE `ia` ENABLE KEYS */;
 
 -- Volcando estructura para tabla indi.mapa

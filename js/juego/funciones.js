@@ -676,3 +676,12 @@ function repintar_items()
     abrir_items();
 }
 //_______________________________________________
+function dialogoIA(data)
+{
+    var temp_var = {};
+    temp_var.titulo = data.descripcion;
+    temp_var.mensaje = data.descripcion;
+    //temp_var.funcion = "asignar_arma("+(entrada.id)+");";// JSON.stringify
+    modal_mensaje(temp_var);
+}
+//_______________________________________________

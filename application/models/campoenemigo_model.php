@@ -8,6 +8,7 @@ class Campoenemigo_model extends CI_Model
        $this->load->library('session');
        $this->load->model('campo_model');
        $this->load->model('enemigo_model');
+       $this->load->model('ia_model');
     }
 //________________________________________________________________
 function todo($campo_id)
@@ -125,15 +126,15 @@ function consulto_campo($campo_id)
             {
                 $Arreglo[$K] = array
                 (
-                   'id' => $info->id,
-                   'campo_id' => $info->campo_id,
-                   'enemigo_id' => $info->enemigo_id,
+                    'id' => $info->id,
+                    'campo_id' => $info->campo_id,
+                    'enemigo_id' => $info->enemigo_id,
                 );
-               ####################################################################
-               #$Arreglo[$K]["campo"] = $this->campo_model->consulto($info->campo_id);
-               $Arreglo[$K]["enemigo"] = $this->enemigo_model->consulto($info->enemigo_id);
-               ####################################################################
-               $K = $K + 1;
+                ####################################################################
+                $Arreglo[$K]["enemigo"] = $this->enemigo_model->consulto($info->enemigo_id);
+                $Arreglo[$K]["ia"] = $this->ia_model->consulto($info->enemigo_id);
+                ####################################################################
+                $K = $K + 1;
             }
         }
         #----------------------------------------------------

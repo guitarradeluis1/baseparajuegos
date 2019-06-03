@@ -23,7 +23,7 @@ Licencia <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache2.0</a></p>
 </div>
 <!--Luis Eduardo Bernal Suarez guitarradeluis@gmail.com-->
 <script>
-//console.log("Luis Eduardo Bernal Suarez guitarradeluis@gmail.com");
+console.log("Luis Eduardo Bernal Suarez guitarradeluis@gmail.com");
 console.log("Licencia Apache2.0 (http://www.apache.org/licenses/LICENSE-2.0)");
 /*$(document).ready(function()
 {

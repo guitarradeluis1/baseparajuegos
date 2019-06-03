@@ -13,6 +13,7 @@ class Enemigoarma_model extends CI_Model
 function todo($enemigo_id)
 {
     $this->db->order_by('id', 'asc');
+    $this->db->where("enemigo_id",$enemigo_id);
 	$consulta = $this->db->get('enemigo_arma');
 	if($consulta->num_rows()>0)
     {

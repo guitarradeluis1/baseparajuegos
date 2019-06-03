@@ -1,5 +1,5 @@
 var seg_enemigo = 0;
-function movimiento_enemigo()
+function movimiento_enemigo(data)
 {
     seg_enemigo++;
     if(seg_enemigo == 3)
@@ -125,6 +125,12 @@ function movimiento_enemigo()
                 pint_enemigos[en].body.velocity.y = -temp_velosidad;
                 pint_enemigos[en].animations.play('up');
             }
+        }
+        if(!pint_enemigos[en].movomiento)
+        {
+            pint_enemigos[en].body.velocity.x = 0;
+            pint_enemigos[en].body.velocity.y = 0;
+            pint_enemigos[en].animations.stop();
         }
     }
 }
