@@ -14,6 +14,18 @@
             </p>
         </td>
     </tr>
+    <tr>
+        <td>
+            <p><b>Posición X : </b><br />
+            <?php echo form_input(array("name" => "x", "id" => "x", "placeholder" => "x", "type" => "text", "value" =>$Campoenemigo["x"] )); ?>
+            </p>
+        </td>
+        <td>
+            <p><b>Posición Y : </b><br />
+            <?php echo form_input(array("name" => "y", "id" => "y", "placeholder" => "y", "type" => "text", "value" =>$Campoenemigo["y"] )); ?>
+            </p>
+        </td>
+    </tr>
 </table>
     <?php echo form_submit("post", "Enviar", "class=link_verde"); ?>
     <?php echo form_close(); ?>
@@ -21,7 +33,9 @@
 <script>
 $(document).ready(function()
 {
-     ajax("../../../funciones/lista_enemigo/enemigo_id/<?php echo $Campoenemigo["enemigo_id"]; ?>", "div_enemigo_id");
+    $('#x').keyup(function (){this.value = (this.value + '').replace(/[^0-9]/g, ''); });
+    $('#y').keyup(function (){this.value = (this.value + '').replace(/[^0-9]/g, ''); });
+    ajax("../../../funciones/lista_enemigo/enemigo_id/<?php echo $Campoenemigo["enemigo_id"]; ?>", "div_enemigo_id");
     //-------------------------
 });
 //**********************************

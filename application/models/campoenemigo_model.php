@@ -35,6 +35,8 @@ function todo($campo_id)
                    'id' => $info->id,
                    'campo_id' => $info->campo_id,
                    'enemigo_id' => $info->enemigo_id,
+                   'y' => $info->y,
+                   'x' => $info->x,
                 );
                ####################################################################
                $Arreglo[$K]["campo"] = $this->campo_model->consulto($info->campo_id);
@@ -93,13 +95,15 @@ function consulto($id)
     {
         $retorno = array
         (
-           'id' => $info->id,
-           'campo_id' => $info->campo_id,
-           'enemigo_id' => $info->enemigo_id,
-           ####################################################################
-           "campo" => $this->campo_model->consulto($info->campo_id),
-           "enemigo" => $this->enemigo_model->consulto($info->enemigo_id),
-           ####################################################################
+            'id' => $info->id,
+            'campo_id' => $info->campo_id,
+            'enemigo_id' => $info->enemigo_id,
+            'y' => $info->y,
+            'x' => $info->x,
+            ####################################################################
+            "campo" => $this->campo_model->consulto($info->campo_id),
+            "enemigo" => $this->enemigo_model->consulto($info->enemigo_id),
+            ####################################################################
         );  
     }
 	return  $retorno;
@@ -129,6 +133,8 @@ function consulto_campo($campo_id)
                     'id' => $info->id,
                     'campo_id' => $info->campo_id,
                     'enemigo_id' => $info->enemigo_id,
+                    'y' => $info->y,
+                    'x' => $info->x,
                 );
                 ####################################################################
                 $Arreglo[$K]["enemigo"] = $this->enemigo_model->consulto($info->enemigo_id);
@@ -166,6 +172,8 @@ function consulto_objeto($campo_id)
                    'id' => $info->id,
                    'campo_id' => $info->campo_id,
                    'objeto_id' => $info->objeto_id,
+                   'y' => $info->y,
+                   'x' => $info->x,
                 );
                ####################################################################
                #$Arreglo[$K]["campo"] = $this->campo_model->consulto($info->campo_id);

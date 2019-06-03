@@ -69,6 +69,7 @@ if($Salida)
         <th>DIBUJO</th>
         <th>NOMBRE</th>
         <th>MOVIMIENTO</th>
+        <th>POSICIÓN</th>
         <th>ELIMINAR</th>
     </tr>
 <?php
@@ -80,8 +81,12 @@ if($campo_enemigo)
     <tr>
         <td><?php echo anchor($controlador."/editenemigo/".$info_ene["id"]."/".$Campo["id"], "Editar", "class='plata'"); ?></td>
         <td><?php echo $info_ene["enemigo"]["objeto"]["nombre"]; ?></td>
-        <td><?php echo $info_ene["enemigo"]["nombre"]; ?></td>
+        <td>
+            <?php echo $info_ene["enemigo"]["nombre"]; ?>
+            <?php if(isset($info_ene["ia"]["nombre"])){echo "<br/><b>IA: </b>".$info_ene["ia"]["nombre"];} ?>
+        </td>
         <td><?php echo $info_ene["enemigo"]["movimientos"]["nombre"]; ?></td>
+        <td><?php echo $info_ene["x"].",".$info_ene["y"]; ?></td>
         <td><?php echo anchor($controlador."/eliminarenemigo/".$info_ene["id"]."/".$Campo["id"], "Eliminar", "class='plata'"); ?></td>
     </tr>
     <?php

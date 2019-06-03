@@ -289,10 +289,19 @@ function create()
     //Pintando enemigos--------------------------
     for(var en in enemigos)
     {
-        var temp_x = Math.floor(Math.random() * (40 - canvas_tanano_x)) + canvas_tanano_x;
-        var temp_y = Math.floor(Math.random() * (60 - canvas_tanano_y)) + canvas_tanano_y;
+        if(enemigos[en].x && enemigos[en].y)
+        {
+            var temp_x = enemigos[en].x;
+            var temp_y = enemigos[en].y;
+        }
+        else
+        {
+            var temp_x = Math.floor(Math.random() * (40 - canvas_tanano_x)) + canvas_tanano_x;
+            var temp_y = Math.floor(Math.random() * (60 - canvas_tanano_y)) + canvas_tanano_y;
+        }
+        
         //game.load.spritesheet( enemigos[en].enemigo.objeto.nombre.toString(), origen+enemigos[en].enemigo.objeto.archivo.toString(), parseInt(enemigos[en].enemigo.objeto.cortex), parseInt(enemigos[en].enemigo.objeto.cortey) );
-        pint_enemigos[en] = game.add.sprite(temp_x, temp_y, enemigos[en].enemigo.objeto.nombre.toString());
+        pint_enemigos[en] = game.add.sprite( parseFloat(temp_x), parseFloat(temp_y), enemigos[en].enemigo.objeto.nombre.toString());
         //Direcionamiento ------------------------------------
         pint_enemigos[en].tipo_moviemiento = parseInt(enemigos[en].enemigo.movimientos.id);
         // 1 = quieto | 2 = arriba abajo | 3 = derecha izquierda | 4 = aleatorio | 5 = ataque | 6 = defensa

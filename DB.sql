@@ -188,17 +188,19 @@ CREATE TABLE IF NOT EXISTS `campo_enemigo` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `campo_id` bigint(20) NOT NULL,
   `enemigo_id` bigint(20) NOT NULL,
+  `x` double DEFAULT NULL,
+  `y` double DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- Volcando datos para la tabla indi.campo_enemigo: ~4 rows (aproximadamente)
 DELETE FROM `campo_enemigo`;
 /*!40000 ALTER TABLE `campo_enemigo` DISABLE KEYS */;
-INSERT INTO `campo_enemigo` (`id`, `campo_id`, `enemigo_id`) VALUES
-	(5, 2, 1),
-	(6, 1, 1),
-	(7, 2, 2),
-	(8, 2, 2);
+INSERT INTO `campo_enemigo` (`id`, `campo_id`, `enemigo_id`, `x`, `y`) VALUES
+	(5, 2, 1, NULL, NULL),
+	(7, 2, 2, NULL, NULL),
+	(8, 2, 2, NULL, NULL),
+	(10, 1, 1, 300, 250);
 /*!40000 ALTER TABLE `campo_enemigo` ENABLE KEYS */;
 
 -- Volcando estructura para tabla indi.campo_objeto
@@ -234,7 +236,7 @@ CREATE TABLE IF NOT EXISTS `campo_usuarios` (
 DELETE FROM `campo_usuarios`;
 /*!40000 ALTER TABLE `campo_usuarios` DISABLE KEYS */;
 INSERT INTO `campo_usuarios` (`usuarios_id`, `campo_id`, `x`, `y`, `cambio`) VALUES
-	(1, 1, 282.61111724853527, 306.6950000000011, '03-06-2019'),
+	(1, 1, 20, 20, '03-06-2019'),
 	(4, 2, 349.37000000000006, 250, '60');
 /*!40000 ALTER TABLE `campo_usuarios` ENABLE KEYS */;
 
@@ -393,7 +395,7 @@ CREATE TABLE IF NOT EXISTS `enemigo` (
 DELETE FROM `enemigo`;
 /*!40000 ALTER TABLE `enemigo` DISABLE KEYS */;
 INSERT INTO `enemigo` (`id`, `objeto_id`, `movimientos_id`, `nombre`, `left_id`, `right_id`, `down_id`, `up_id`, `stop_id`, `dano_min`, `dano_max`, `vida`, `defensa`, `fuerza`, `punteria`, `velocidad`, `velocidad_juego`) VALUES
-	(1, 2, 4, 'gato enemigo', 3, 4, 3, 6, 3, 2, 4, 20, 1, 1, 1, 25, 2),
+	(1, 2, 3, 'gato enemigo', 3, 4, 3, 6, 3, 2, 4, 20, 1, 1, 1, 25, 2),
 	(2, 5, 4, 'Zorro Blanco', 36, 37, 35, 38, 35, 0, 0, 0, 0, 0, 0, 2, 0);
 /*!40000 ALTER TABLE `enemigo` ENABLE KEYS */;
 
